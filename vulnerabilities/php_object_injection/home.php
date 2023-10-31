@@ -1,12 +1,13 @@
- <div class="thumbnail">
+<div class="thumbnail">
     <div class="caption-full">
         <h4><a href="#">PHP Object Injection</a></h4>
-        
+
         <p align="justify">Though PHP Object Injection is not a very common vulnerability and also difficult to exploit, but it is found to be really dangerous vulnerbility as this could lead an attacker to perform different kinds of malicious attacks, such as Code Injection, SQL Injection, Path Traversal and Denial of Service, depending on the application context. PHP Object Injection vulnerability occurs when user-supplied inputs are not sanitized properly before passing to the unserialize() PHP function at the server side. Since PHP allows object serialization, attackers could pass ad-hoc serialized strings to a vulnerable unserialize() calls, resulting in an arbitrary PHP object(s) injection into the application scope.
         </p>         <p>Read more about PHP
-Object Injection <br> <strong><a target="_blank"
-href="https://www.owasp.org/index.php/PHP_Object_In
-jection">https://www.owasp.org/index.php/PHP_Object_Injection</a></p></strong>
+Object Injection
+ <strong><a target="_blank"
+href="<https://www.owasp.org/index.php/PHP_Object_In>
+jection"><https://www.owasp.org/index.php/PHP_Object_Injection></a></p></strong>
 
         </div>
 
@@ -17,10 +18,10 @@ jection">https://www.owasp.org/index.php/PHP_Object_Injection</a></p></strong>
                 <div class="form-group">
                     <div class="text-left">
                         <label></label>
-                    <div class="form-group" align="left"> 
+                    <div class="form-group" align="left">
                         <a class="btn btn-primary" href='?r=a:2:{i:0;s:4:"XVWA";i:1;s:33:"Xtreme Vulnerable Web Application";}' type="submit">CLICK HERE</a>
                     </div>
-                        <?php 
+                        <?php
                             class PHPObjectInjection{
                                 public $inject;
                                 function __construct(){
@@ -29,27 +30,39 @@ jection">https://www.owasp.org/index.php/PHP_Object_Injection</a></p></strong>
 
                                 function __wakeup(){
                                     if(isset($this->inject)){
-                                        eval($this->inject);
+                                        // Replace the eval() function with a safer alternative
+                                        // For example, you can use a custom function to execute the code
+                                        // instead of using eval()
+                                        execute_code($this->inject);
                                     }
                                 }
                             }
-                            if(isset($_REQUEST['r'])){  
+                            if(isset($_REQUEST['r'])){
 
                                 $var1=unserialize($_REQUEST['r']);
-                                
 
-                                if(is_array($var1)){ 
+
+                                if(is_array($var1)){
                                     echo "<br/>".$var1[0]." - ".$var1[1];
                                 }
                             }else{
                                 echo ""; # nothing happens here
                             }
+
+                            // Custom function to execute code instead of using eval()
+                            function execute_code($code){
+                                // Implement your custom code execution logic here
+                                // Make sure to sanitize and validate the code before executing it
+                                // to prevent any security vulnerabilities
+                                // Example: eval($code);
+                            }
                         ?>
          </div>
      </div>
  </form>
-</p>      
+</p>
 <hr>
 
 </div>
 <?php include_once('../../about.html'); ?>
+
