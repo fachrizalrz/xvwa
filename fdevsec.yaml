@@ -2,6 +2,6 @@ id:
   org: 46894da4-ac13-46a9-a00a-0e5aacda37f2
   app: 6a3f45f3-56df-41f6-841e-1ed060f2f98c
   
-  fail_pipeline:
-    risk_rating: 7
+fail_pipeline:
+  risk_rating: 7
 
